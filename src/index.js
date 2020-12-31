@@ -71,3 +71,23 @@ async function makeAsyncSmothie() {
     return await Promise.all([kivi,apple])
 }
 makeAsyncSmothie().then(fruit => console.log(fruit))
+
+
+
+/* 
+* - Обработка ошибок
+*/
+
+const getUsers = async () => {
+  try {                            //try{}catch  - служит для отлова ошибок
+    const result = await fetch('https://jsonplaceholder.typicode.com/users');
+      throw 'Поломалось'   //Просто имитируем поломку (в реальном коде не пишем)
+      return result
+  } catch (err) {
+     
+    throw err  //для проброски ошибки во внешний код пишем throw
+  }
+};
+getUsers()
+  .then(users => console.log(users))
+  .catch(err => console.log(err));
