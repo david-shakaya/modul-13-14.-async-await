@@ -1,4 +1,6 @@
+import { data } from 'autoprefixer';
 import './styles.css';
+import axios from 'axios'
 
 /* 
 * - Асинхронные функции - это Альтернатива Promise.
@@ -91,3 +93,18 @@ const getUsers = async () => {
 getUsers()
   .then(users => console.log(users))
   .catch(err => console.log(err));
+
+
+  // >>>>>>>>>>>>>>>>> Используем библиотеку AXIOS вместо fetch()
+// Устанавливаем пакет и читаем доки
+
+const getPhoto = async () => {
+  try {
+    const result = await axios.get('https://jsonplaceholder.typicode.com/photos')
+    return result
+    
+  } catch (err) {
+    console.log(err);
+  }
+}
+getPhoto().then(photo => console.log(photo))
